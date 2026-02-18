@@ -1,4 +1,4 @@
-import 'package:accounts/controllers/sidebarController.dart';
+import 'package:accounts/controllers/dashboardcontroller/sidebarController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

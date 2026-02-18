@@ -1,8 +1,8 @@
 import 'package:accounts/Appbar/customAppbar.dart';
 import 'package:accounts/Appbar/customtabs.dart';
-import 'package:accounts/controllers/customtabcontroller.dart';
-import 'package:accounts/widgets/customSidebar.dart';
-import 'package:accounts/widgets/main_content.dart';
+import 'package:accounts/controllers/dashboardcontroller/customtabcontroller.dart';
+import 'package:accounts/widgets/main/customSidebar.dart';
+import 'package:accounts/widgets/main/main_content.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

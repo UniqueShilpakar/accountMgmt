@@ -1,4 +1,6 @@
 import 'package:accounts/controllers/state/main_content_controller.dart';
+import 'package:accounts/widgets/dialogueBoxWidget/AirLinePassDialog.dart';
+import 'package:accounts/widgets/dialogueBoxWidget/AirlineContactsDialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,7 +22,10 @@ class MainContent extends StatelessWidget {
           children: [
             // Row 1: Airlines Contacts
             _buildFormRow(
-              leftButton: _buildOutlinedButton('Add Airlines Contact', controller.addAirlinesContact),
+              leftButton: _buildOutlinedButton(
+                'Add Airlines Contact',
+                () => showAirlineContactsDialog(), // Opens dialog on click
+              ),
               centerText: 'Airlines Contacts',
               dropdown: _buildDropdown(controller.selectedAirlinesLabel, ['Label1', 'Label2', 'Label3']),
               rightButton: _buildOutlinedButton('Get Airlines Contact', controller.getAirlinesContact),
@@ -30,7 +35,9 @@ class MainContent extends StatelessWidget {
             
             // Row 2: Airlines Credentials
             _buildFormRow(
-              leftButton: _buildOutlinedButton('Add Airline Credentials', controller.addAirlineCredentials),
+              leftButton: _buildOutlinedButton('Add Airline Credentials', 
+              () => showAirlinePassDialog(),
+              ),
               centerText: 'Airlines Credentials',
               dropdown: _buildDropdown(controller.selectedCredentialsLabel, ['Label1', 'Label2', 'Label3']),
               rightButton: _buildOutlinedButton('Get Airlines Credentials', controller.getAirlinesCredentials),
