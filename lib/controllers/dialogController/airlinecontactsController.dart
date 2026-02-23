@@ -50,13 +50,6 @@ class AirlineContactsDialogController extends GetxController {
             onPressed: () {
               clearForm();
               Get.back();
-              Get.snackbar(
-                'Deleted',
-                'Contact deleted successfully',
-                snackPosition: SnackPosition.BOTTOM,
-                backgroundColor: Colors.red,
-                colorText: Colors.white,
-              );
             },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             child: Text('Delete', style: TextStyle(color: Colors.white)),
@@ -69,23 +62,8 @@ class AirlineContactsDialogController extends GetxController {
   // Save
   void onSaveClicked() {
     if (contactNameController.text.isEmpty) {
-      Get.snackbar(
-        'Validation Error',
-        'Contact Name is required',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
-      );
       return;
     }
-
-    Get.snackbar(
-      'Success',
-      'Contact saved successfully',
-      snackPosition: SnackPosition.BOTTOM,
-      backgroundColor: Colors.green,
-      colorText: Colors.white,
-    );
 
     Get.back();
   }

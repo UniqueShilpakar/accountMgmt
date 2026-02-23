@@ -1,4 +1,4 @@
-import 'package:accounts/controllers/dialogueController/airlinecontactsController.dart';
+import 'package:accounts/controllers/dialogController/airlinecontactsController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

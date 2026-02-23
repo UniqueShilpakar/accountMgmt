@@ -1,6 +1,7 @@
 import 'package:accounts/controllers/state/main_content_controller.dart';
-import 'package:accounts/widgets/dialogueBoxWidget/AirLinePassDialog.dart';
-import 'package:accounts/widgets/dialogueBoxWidget/AirlineContactsDialog.dart';
+import 'package:accounts/widgets/dialogBoxWidget/AirLinePassDialog.dart';
+import 'package:accounts/widgets/dialogBoxWidget/AirlineContactsDialog.dart';
+import 'package:accounts/widgets/dialogBoxWidget/gdspassdialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -47,7 +48,9 @@ class MainContent extends StatelessWidget {
             
             // Row 3: GDS Credentials
             _buildFormRow(
-              leftButton: _buildOutlinedButton('Add GDS Credentials', controller.addGDSCredentials),
+              leftButton: _buildOutlinedButton('Add GDS Credentials', 
+              () => showGdsPassDialog(),
+              ),
               centerText: 'GDS Credentials',
               dropdown: _buildDropdown(controller.selectedGDSLabel, ['Label1', 'Label2', 'Label3']),
               rightButton: _buildOutlinedButton('Get GDS Credentials', controller.getGDSCredentials),
