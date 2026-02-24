@@ -1,9 +1,11 @@
 import 'package:accounts/controllers/state/main_content_controller.dart';
 import 'package:accounts/widgets/dialogBoxWidget/AirLinePassDialog.dart';
 import 'package:accounts/widgets/dialogBoxWidget/AirlineContactsDialog.dart';
+import 'package:accounts/widgets/dialogBoxWidget/BankDetailsDialog.dart';
 import 'package:accounts/widgets/dialogBoxWidget/gdspassdialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 
 class MainContent extends StatelessWidget {
   MainContent({Key? key}) : super(key: key);
@@ -58,9 +60,11 @@ class MainContent extends StatelessWidget {
             
             SizedBox(height: 16),
             
-            // Row 4: Bank Details
+            //Row 4: Bank Details
             _buildFormRow(
-              leftButton: _buildOutlinedButton('Add Bank Details', controller.addBankDetails),
+              leftButton: _buildOutlinedButton('Add Bank Details',
+               () => showBankDetailsDialog(),
+               ),
               centerText: 'Select Bank Info',
               dropdown: _buildDropdown(controller.selectedBankLabel, ['Label1', 'Label2', 'Label3']),
               rightButton: _buildOutlinedButton('Get Bank Details', controller.getBankDetails),
