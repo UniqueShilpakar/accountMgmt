@@ -3,6 +3,7 @@ import 'package:accounts/widgets/dialogBoxWidget/AirLinePassDialog.dart';
 import 'package:accounts/widgets/dialogBoxWidget/AirlineContactsDialog.dart';
 import 'package:accounts/widgets/dialogBoxWidget/BankDetailsDialog.dart';
 import 'package:accounts/widgets/dialogBoxWidget/gdspassdialog.dart';
+import 'package:accounts/widgets/dialogBoxWidget/route_entry_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -74,7 +75,9 @@ class MainContent extends StatelessWidget {
             
             // Row 5: Routes
             _buildFormRow(
-              leftButton: _buildOutlinedButton('Add Routes', controller.addRoutes),
+              leftButton: _buildOutlinedButton('Add Routes', 
+              () => showRouteEntryDialog(),
+              ),
               centerText: 'Select Sector',
               dropdown: _buildDropdown(controller.selectedRouteLabel, ['Label1', 'Label2', 'Label3']),
               rightButton: _buildOutlinedButton('Get Route Details', controller.getRouteDetails),
