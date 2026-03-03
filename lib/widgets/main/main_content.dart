@@ -2,6 +2,7 @@ import 'package:accounts/controllers/state/main_content_controller.dart';
 import 'package:accounts/widgets/dialogBoxWidget/AirLinePassDialog.dart';
 import 'package:accounts/widgets/dialogBoxWidget/AirlineContactsDialog.dart';
 import 'package:accounts/widgets/dialogBoxWidget/BankDetailsDialog.dart';
+import 'package:accounts/widgets/dialogBoxWidget/create_ledger_dialog.dart';
 import 'package:accounts/widgets/dialogBoxWidget/gdspassdialog.dart';
 import 'package:accounts/widgets/dialogBoxWidget/route_entry_dialog.dart';
 import 'package:flutter/material.dart';
@@ -87,7 +88,9 @@ class MainContent extends StatelessWidget {
             
             // Row 6: Ledger
             _buildFormRow(
-              leftButton: _buildOutlinedButton('Create Ledger', controller.createLedger),
+              leftButton: _buildOutlinedButton('Create Ledger', 
+              () => showCreateLedgerDialog(),
+              ),
               centerText: 'Select Ledger',
               dropdown: _buildDropdown(controller.selectedLedgerLabel, ['Label1', 'Label2', 'Label3']),
               rightButton: _buildOutlinedButton('Get Ledger Info', controller.getLedgerInfo),
