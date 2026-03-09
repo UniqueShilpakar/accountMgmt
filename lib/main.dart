@@ -1,4 +1,4 @@
-import 'package:accounts/dashboard/homePage.dart';
+import 'package:accounts/dashboard/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

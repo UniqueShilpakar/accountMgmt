@@ -1,11 +1,11 @@
-import 'package:accounts/controllers/dialogController/BankdetailController.dart';
+import 'package:accounts/controllers/dialogController/airline_pass_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class BankDetailsDialog extends StatelessWidget {
-  BankDetailsDialog({Key? key}) : super(key: key);
+class AirLinePassDialog extends StatelessWidget {
+  AirLinePassDialog({Key? key}) : super(key: key);
 
-  final BankDetailsController controller = Get.put(BankDetailsController());
+  final AirlinePassController controller = Get.put(AirlinePassController());
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +35,10 @@ class BankDetailsDialog extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  'Bank Details Entry Form',
+                  'Airline Pass. Entry Form',
                   style: TextStyle(
                     fontSize: 18,
-                    fontWeight: .w700,
+                    fontWeight: FontWeight.w700,
                     color: Color(0xFFFF8B3D),
                   ),
                 ),
@@ -46,52 +46,64 @@ class BankDetailsDialog extends StatelessWidget {
             ),
             SizedBox(height: 20),
 
-            //Creaditor Name DropDown
+            // Organization Dropdown
             _buildFormField(
-              label: 'Creditor Name',
+              label: 'Organization',
               child: _buildDropdown(
-                controller.selectedCreditorName,
-                controller.creditorNames,
+                controller.selectedOrganization,
+                controller.organizations,
               ),
             ),
 
             SizedBox(height: 12),
-            //bank name
+
+            // UserID
             _buildFormField(
-              label: 'Bank Name',
-              child: _buildTextField(controller.bankNameController),
+              label: 'UserID',
+              child: _buildTextField(controller.userIdController),
             ),
 
             SizedBox(height: 12),
 
-            // Account Name
+            // Password
             _buildFormField(
-              label: 'Account Name',
-              child: _buildTextField(controller.accountNameController),
+              label: 'Password',
+              child: _buildTextField(
+                controller.passwordController,
+                isPassword: true,
+              ),
             ),
 
             SizedBox(height: 12),
 
-            // Account No
+            // Dcode
             _buildFormField(
-              label: 'Account No',
-              child: _buildTextField(controller.accountNoController),
+              label: 'Dcode',
+              child: _buildTextField(controller.dcodeController),
             ),
 
             SizedBox(height: 12),
 
-            // Branch
+            // URL
             _buildFormField(
-              label: 'Branch',
-              child: _buildTextField(controller.branchController),
+              label: 'URL',
+              child: _buildTextField(controller.urlController),
             ),
 
             SizedBox(height: 12),
 
-            // Remarks
+            // Expiry Date
             _buildFormField(
-              label: 'Remarks',
-              child: _buildTextField(controller.remarksController),
+              label: 'Expiry Date',
+              child: _buildTextField(controller.expiryDateController),
+            ),
+
+            SizedBox(height: 12),
+
+            // PWID
+            _buildFormField(
+              label: 'PWID',
+              child: _buildTextField(controller.pwidController, hint: '(New)',),
             ),
 
             SizedBox(height: 24),
@@ -125,7 +137,7 @@ class BankDetailsDialog extends StatelessWidget {
     return Row(
       children: [
         SizedBox(
-          width: 110,
+          width: 100,
           child: Text(
             label,
             style: TextStyle(
@@ -148,17 +160,19 @@ class BankDetailsDialog extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(color: Color(0xFFD1D5DB)),
-          borderRadius: BorderRadius.circular(6),
+          borderRadius: .circular(6),
         ),
         child: DropdownButtonHideUnderline(
-          child: DropdownButton<String>(
+          child: DropdownButton(
             value: selectedValue.value,
             isExpanded: true,
-            icon: Icon(Icons.arrow_drop_down, color: Colors.black54, size: 20),
+            //used icon for now
+            // ---------------------------------
+            icon: Icon(Icons.arrow_drop_down, color: Colors.black, size: 20),
             style: TextStyle(
               fontSize: 13,
-              fontWeight: FontWeight.w500,
-              color: Colors.black87,
+              fontWeight: .w500,
+              color: Colors.black,
             ),
             items: items.map((String value) {
               return DropdownMenuItem<String>(value: value, child: Text(value));
@@ -173,13 +187,20 @@ class BankDetailsDialog extends StatelessWidget {
       ),
     );
   }
-   Widget _buildTextField(TextEditingController controller) {
+  Widget _buildTextField(
+    TextEditingController controller, {
+    String hint = '',
+    bool isPassword = false,
+  }) {
     return Container(
       height: 40,
       child: TextField(
         controller: controller,
+        obscureText: isPassword,
         style: TextStyle(fontSize: 13),
         decoration: InputDecoration(
+          hintText: hint,
+          hintStyle: TextStyle(color: Colors.black54, fontSize: 13),
           contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(6),
@@ -229,6 +250,6 @@ class BankDetailsDialog extends StatelessWidget {
   }
 }
 
-void showBankDetailsDialog() {
-  Get.dialog(BankDetailsDialog(), barrierDismissible: true);
+void showAirlinePassDialog() {
+  Get.dialog(AirLinePassDialog(), barrierDismissible: true);
 }

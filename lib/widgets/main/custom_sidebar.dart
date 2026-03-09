@@ -1,7 +1,6 @@
-import 'package:accounts/controllers/dashboardcontroller/sidebarController.dart';
+import 'package:accounts/controllers/dashboardcontroller/side_bar_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 
 class CustomSidebar extends StatelessWidget {
   CustomSidebar({Key? key}) : super(key: key);
@@ -24,8 +23,11 @@ class CustomSidebar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final SidebarController controller = Get.put(SidebarController(), permanent: false);
-    
+    final SidebarController controller = Get.put(
+      SidebarController(),
+      permanent: false,
+    );
+
     return Container(
       width: 135,
       child: Column(
@@ -36,12 +38,10 @@ class CustomSidebar extends StatelessWidget {
             margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
             decoration: BoxDecoration(
               color: Color(0xFFFF8B3D),
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(50),
-              ),
+              borderRadius: BorderRadius.vertical(top: Radius.circular(50)),
             ),
           ),
-          
+
           // Menu items with side borders
           Expanded(
             child: Container(
@@ -61,7 +61,7 @@ class CustomSidebar extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final item = menuItems[index];
                       final isSelected = ctrl.selectedMenuItem.value == item;
-                      
+
                       return _buildMenuItem(
                         label: item,
                         isSelected: isSelected,
@@ -73,16 +73,14 @@ class CustomSidebar extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Bottom orange curve
           Container(
             height: 20,
             margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
             decoration: BoxDecoration(
               color: Color(0xFFFF8B3D),
-              borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(50),
-              ),
+              borderRadius: BorderRadius.vertical(bottom: Radius.circular(50)),
             ),
           ),
         ],
@@ -98,7 +96,7 @@ class CustomSidebar extends StatelessWidget {
     return StatefulBuilder(
       builder: (context, setState) {
         bool isHovering = false;
-        
+
         return MouseRegion(
           cursor: SystemMouseCursors.click,
           onEnter: (_) => setState(() => isHovering = true),
@@ -109,11 +107,9 @@ class CustomSidebar extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
               margin: EdgeInsets.symmetric(vertical: 1),
               decoration: BoxDecoration(
-                color: isSelected 
-                    ? Color(0xFFF3F4F6) 
-                    : isHovering 
-                        ? Color(0xFFF9FAFB) 
-                        : Colors.transparent,
+                color: (isSelected || isHovering)
+                    ? const Color(0xFFF3F4F6)
+                    : Colors.transparent,
                 borderRadius: BorderRadius.circular(4),
               ),
               child: Text(

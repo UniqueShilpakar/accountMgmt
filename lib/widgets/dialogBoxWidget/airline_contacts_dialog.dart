@@ -1,4 +1,4 @@
-import 'package:accounts/controllers/dialogController/airlinecontactsController.dart';
+import 'package:accounts/controllers/dialogController/airline_contacts_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,7 +27,7 @@ class AirlineContactsDialog extends StatelessWidget {
           ),
         ),
         child: Column(
-          mainAxisSize: MainAxisSize.min, // Fixed: was .min
+          mainAxisSize: MainAxisSize.min, 
           children: [
             // Header
             Container(

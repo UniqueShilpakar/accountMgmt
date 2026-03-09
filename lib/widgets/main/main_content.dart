@@ -1,7 +1,7 @@
 import 'package:accounts/controllers/state/main_content_controller.dart';
-import 'package:accounts/widgets/dialogBoxWidget/AirLinePassDialog.dart';
-import 'package:accounts/widgets/dialogBoxWidget/AirlineContactsDialog.dart';
-import 'package:accounts/widgets/dialogBoxWidget/BankDetailsDialog.dart';
+import 'package:accounts/widgets/dialogBoxWidget/air_line_pass_dialog.dart';
+import 'package:accounts/widgets/dialogBoxWidget/airline_contacts_dialog.dart';
+import 'package:accounts/widgets/dialogBoxWidget/bank_details_dialog.dart';
 import 'package:accounts/widgets/dialogBoxWidget/create_ledger_dialog.dart';
 import 'package:accounts/widgets/dialogBoxWidget/gdspassdialog.dart';
 import 'package:accounts/widgets/dialogBoxWidget/route_entry_dialog.dart';

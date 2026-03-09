@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'dart:developer' as developer;
 
 class MainContentController extends GetxController {
   // Airlines Contacts
@@ -40,70 +41,70 @@ class MainContentController extends GetxController {
 
   // Methods for button actions
   void addAirlinesContact() {
-    print('Add Airlines Contact clicked');
+    developer.log('Add Airlines Contact clicked', name: 'MainContentController');
   }
 
   void getAirlinesContact() {
-    print('Get Airlines Contact clicked');
+    developer.log('Get Airlines Contact clicked', name: 'MainContentController');
   }
 
   void addAirlineCredentials() {
-    print('Add Airline Credentials clicked');
+    developer.log('Add Airline Credentials clicked', name: 'MainContentController');
   }
 
   void getAirlinesCredentials() {
-    print('Get Airlines Credentials clicked');
+    developer.log('Get Airlines Credentials clicked', name: 'MainContentController');
   }
 
   void addGDSCredentials() {
-    print('Add GDS Credentials clicked');
+    developer.log('Add GDS Credentials clicked', name: 'MainContentController');
   }
 
   void getGDSCredentials() {
-    print('Get GDS Credentials clicked');
+    developer.log('Get GDS Credentials clicked', name: 'MainContentController');
   }
 
   void addBankDetails() {
-    print('Add Bank Details clicked');
+    developer.log('Add Bank Details clicked', name: 'MainContentController');
   }
 
   void getBankDetails() {
-    print('Get Bank Details clicked');
+    developer.log('Get Bank Details clicked', name: 'MainContentController');
   }
 
   void addRoutes() {
-    print('Add Routes clicked');
+    developer.log('Add Routes clicked', name: 'MainContentController');
   }
 
   void getRouteDetails() {
-    print('Get Route Details clicked');
+    developer.log('Get Route Details clicked', name: 'MainContentController');
   }
 
   void createLedger() {
-    print('Create Ledger clicked');
+    developer.log('Create Ledger clicked', name: 'MainContentController');
   }
 
   void getLedgerInfo() {
-    print('Get Ledger Info clicked');
+    developer.log('Get Ledger Info clicked', name: 'MainContentController');
   }
 
   void createSupplier() {
-    print('Create Supplier clicked');
+    developer.log('Create Supplier clicked', name: 'MainContentController');
   }
 
   void getSupplierInfo() {
-    print('Get Supplier Info clicked');
+    developer.log('Get Supplier Info clicked', name: 'MainContentController');
   }
 
   void getVendorInfo() {
-    print('Get Vendor Info clicked');
+    developer.log('Get Vendor Info clicked', name: 'MainContentController');
   }
 
   void viewCommission() {
-    print('View Commission clicked');
+    developer.log('View Commission clicked', name: 'MainContentController');
   }
 
   void createNewGroup() {
-    print('Create New Group clicked');
+    developer.log('Create New Group clicked', name: 'MainContentController');
   }
 }
