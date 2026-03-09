@@ -1,4 +1,4 @@
-import 'package:accounts/acc.entry/dashboard/account_home_page.dart';
+import 'package:accounts/acc.entry/account%20_dashboard/account_home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

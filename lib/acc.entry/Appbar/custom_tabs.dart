@@ -1,4 +1,4 @@
-import 'package:accounts/acc.entry/controllers/dashboardcontroller/custom_tab_controller.dart';
+import 'package:accounts/acc.entry/controllers/account_dashboard_controller/custom_tab_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

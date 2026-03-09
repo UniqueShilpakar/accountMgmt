@@ -1,6 +1,6 @@
 import 'package:accounts/acc.entry/Appbar/custom_appbar.dart';
 import 'package:accounts/acc.entry/Appbar/custom_tabs.dart';
-import 'package:accounts/acc.entry/controllers/dashboardcontroller/custom_tab_controller.dart';
+import 'package:accounts/acc.entry/controllers/account_dashboard_controller/custom_tab_controller.dart';
 import 'package:accounts/acc.entry/widgets/Account_section_content/custom_sidebar.dart';
 import 'package:accounts/acc.entry/widgets/Account_section_content/main_account_content.dart';
 import 'package:flutter/material.dart';
