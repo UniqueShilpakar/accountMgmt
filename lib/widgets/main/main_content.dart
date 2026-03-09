@@ -5,6 +5,7 @@ import 'package:accounts/widgets/dialogBoxWidget/BankDetailsDialog.dart';
 import 'package:accounts/widgets/dialogBoxWidget/create_ledger_dialog.dart';
 import 'package:accounts/widgets/dialogBoxWidget/gdspassdialog.dart';
 import 'package:accounts/widgets/dialogBoxWidget/route_entry_dialog.dart';
+import 'package:accounts/widgets/dialogBoxWidget/supplier_dilogue.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -100,7 +101,9 @@ class MainContent extends StatelessWidget {
             
             // Row 7: Supplier
             _buildFormRow(
-              leftButton: _buildOutlinedButton('Create Supplier', controller.createSupplier),
+              leftButton: _buildOutlinedButton('Create Supplier', 
+              () => showCreateSupplierDialog(),
+              ),
               centerText: 'Select Supplier',
               dropdown: _buildDropdown(controller.selectedSupplierLabel, ['Label1', 'Label2', 'Label3']),
               rightButton: _buildOutlinedButton('Get Supplier Info', controller.getSupplierInfo),
