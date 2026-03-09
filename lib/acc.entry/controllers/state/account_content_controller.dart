@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'dart:developer' as developer;
 
-class MainContentController extends GetxController {
+class AccountContentController extends GetxController {
   // Airlines Contacts
   var airlinesContact = ''.obs;
   var selectedAirlinesLabel = 'Label1'.obs;

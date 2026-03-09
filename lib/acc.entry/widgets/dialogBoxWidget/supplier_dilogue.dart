@@ -1,18 +1,21 @@
-import 'package:accounts/controllers/dialogController/route_entry_controller.dart';
+
+import 'package:accounts/acc.entry/controllers/dialogController/supplier_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class RouteEntryDialog extends StatelessWidget {
-  RouteEntryDialog({Key? key}) : super(key: key);
+class CreateSupplierDialog extends StatelessWidget {
+  CreateSupplierDialog({Key? key}) : super(key: key);
 
-  final RouteEntryController controller = Get.put(RouteEntryController());
+  final CreateSupplierController controller = Get.put(CreateSupplierController());
 
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
       child: Container(
-        width: 420,
+        width: 450,
         padding: EdgeInsets.all(24),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -24,9 +27,9 @@ class RouteEntryDialog extends StatelessWidget {
         ),
         child: SingleChildScrollView(
           child: Column(
-            mainAxisSize: .min,
+            mainAxisSize: MainAxisSize.min,
             children: [
-              //header
+              // Header
               Container(
                 width: double.infinity,
                 padding: EdgeInsets.symmetric(vertical: 12),
@@ -36,7 +39,7 @@ class RouteEntryDialog extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    'Route Entry Form',
+                    'Create Supplier',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
@@ -45,149 +48,107 @@ class RouteEntryDialog extends StatelessWidget {
                   ),
                 ),
               ),
+
               SizedBox(height: 20),
-              //tie_up
-              _buildFormField(label: 'Tie_Up', 
-              child: _buildDropdown(controller.selectedTieUp),
-              ),
-              SizedBox(height: 12),
 
-              //market
-              _buildFormField(label: 'Market', 
-              child: _buildTextField(controller.marketController),
-              ),
-              SizedBox(height: 12),
-
-              //destination
-              _buildFormField(label: 'Destination', child: _buildDropdown(controller.selectedDestination)),
-              SizedBox(height: 12),
-
-              // Air 1
+              // Supplier Group
               _buildFormField(
-                label: 'Air 1',
-                child: _buildDropdown(controller.selectedAir1),
+                label: 'Supplier Group',
+                child: _buildDropdown(controller.selectedSupplierGroup),
               ),
 
               SizedBox(height: 12),
 
-              // CX1
+              // Supplier Name
               _buildFormField(
-                label: 'CX1',
-                child: _buildTextField(controller.cx1Controller),
+                label: 'Supplier Name',
+                child: _buildTextField(controller.supplierNameController),
               ),
 
               SizedBox(height: 12),
 
-              // Air 2
+              // Category
               _buildFormField(
-                label: 'Air 2',
-                child: _buildDropdown(controller.selectedAir2),
+                label: 'Category',
+                child: _buildDropdown(controller.selectedCategory),
               ),
 
               SizedBox(height: 12),
 
-              // CX2
+              // Address
               _buildFormField(
-                label: 'CX2',
-                child: _buildTextField(controller.cx2Controller),
+                label: 'Address',
+                child: _buildTextField(controller.addressController),
               ),
 
               SizedBox(height: 12),
 
-              // Air 3
+              // Mobile
               _buildFormField(
-                label: 'Air 3',
-                child: _buildDropdown(controller.selectedAir3),
+                label: 'Mobile',
+                child: _buildTextField(controller.mobileController),
               ),
 
               SizedBox(height: 12),
 
-              // CX3
+              // Email Address
               _buildFormField(
-                label: 'CX3',
-                child: _buildTextField(controller.cx3Controller),
+                label: 'Email Address',
+                child: _buildTextField(controller.emailController),
               ),
 
               SizedBox(height: 12),
 
-              // AirR1
+              // VAT/PAN No
               _buildFormField(
-                label: 'AirR1',
-                child: _buildDropdown(controller.selectedAirR1),
+                label: 'VAT/PAN No',
+                child: _buildTextField(controller.vatPanController),
               ),
 
               SizedBox(height: 12),
 
-              // CX1-RBD
+              // Contact Person Name
               _buildFormField(
-                label: 'CX1-RBD',
-                child: _buildTextField(controller.cx1RbdController),
+                label: 'Contact Person Name',
+                child: _buildTextField(controller.contactPersonController),
               ),
 
               SizedBox(height: 12),
 
-              // AirR2
+              // District
               _buildFormField(
-                label: 'AirR2',
-                child: _buildDropdown(controller.selectedAirR2),
+                label: 'District',
+                child: _buildDropdown(controller.selectedDistrict),
               ),
 
               SizedBox(height: 12),
 
-              // CX2-RBD
+              // Ledger ID
               _buildFormField(
-                label: 'CX2-RBD',
-                child: _buildTextField(controller.cx2RbdController),
-              ),
-
-              SizedBox(height: 12),
-
-              // AirR3
-              _buildFormField(
-                label: 'AirR3',
-                child: _buildDropdown(controller.selectedAirR3),
-              ),
-
-              SizedBox(height: 12),
-
-              // CX3-RBD
-              _buildFormField(
-                label: 'CX3-RBD',
-                child: _buildTextField(controller.cx3RbdController),
-              ),
-
-              SizedBox(height: 12),
-
-              // Remarks
-              _buildFormField(
-                label: 'Remarks',
-                child: _buildTextField(controller.remarksController),
+                label: 'Ledger ID',
+                child: _buildTextField(controller.ledgerIdController, hint: '(New)'),
               ),
 
               SizedBox(height: 24),
 
-              // Save Button
-              Align(
-                alignment: Alignment.centerRight,
-                child: ElevatedButton(
-                  onPressed: controller.onSaveClicked,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF2563EB),
-                    foregroundColor: Colors.white,
-                    padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                    elevation: 0,
+              // Action Buttons
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  _buildActionButton(
+                    label: 'Close',
+                    color: Colors.white,
+                    textColor: Color(0xFF2563EB),
+                    onPressed: controller.onCloseClicked,
                   ),
-                  child: Text(
-                    'Save',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                    ),
+                  SizedBox(width: 8),
+                  _buildActionButton(
+                    label: 'Save',
+                    color: Color(0xFF2563EB),
+                    textColor: Colors.white,
+                    onPressed: controller.onSaveClicked,
                   ),
-                ),
+                ],
               ),
             ],
           ),
@@ -200,13 +161,13 @@ class RouteEntryDialog extends StatelessWidget {
     return Row(
       children: [
         SizedBox(
-          width: 90,
+          width: 145,
           child: Text(
             label,
             style: TextStyle(
               fontSize: 14,
-              fontWeight: .w500,
-              color: Colors.black,
+              fontWeight: FontWeight.w500,
+              color: Colors.black87,
             ),
           ),
         ),
@@ -229,14 +190,17 @@ class RouteEntryDialog extends StatelessWidget {
           child: DropdownButton<String>(
             value: selectedValue.value,
             isExpanded: true,
-            icon: Icon(Icons.arrow_drop_down, color: Colors.black, size: 20),
+            icon: Icon(Icons.arrow_drop_down, color: Colors.black54, size: 20),
             style: TextStyle(
               fontSize: 13,
-              fontWeight: .w500,
-              color: Colors.black,
+              fontWeight: FontWeight.w500,
+              color: Colors.black87,
             ),
             items: controller.dropdownItems.map((String value) {
-              return DropdownMenuItem<String>(value: value, child: Text(value));
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
             }).toList(),
             onChanged: (String? newValue) {
               if (newValue != null) {
@@ -249,13 +213,15 @@ class RouteEntryDialog extends StatelessWidget {
     );
   }
 
-Widget _buildTextField(TextEditingController controller) {
+  Widget _buildTextField(TextEditingController controller, {String hint = ''}) {
     return Container(
       height: 40,
       child: TextField(
         controller: controller,
         style: TextStyle(fontSize: 13),
         decoration: InputDecoration(
+          hintText: hint,
+          hintStyle: TextStyle(color: Colors.black54, fontSize: 13),
           contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(6),
@@ -273,9 +239,42 @@ Widget _buildTextField(TextEditingController controller) {
       ),
     );
   }
+
+  Widget _buildActionButton({
+    required String label,
+    required Color color,
+    required Color textColor,
+    required VoidCallback onPressed,
+  }) {
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: color,
+        foregroundColor: textColor,
+        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(6),
+          side: color == Colors.white
+              ? BorderSide(color: Color(0xFF2563EB), width: 1.5)
+              : BorderSide.none,
+        ),
+        elevation: 0,
+      ),
+      child: Text(
+        label,
+        style: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+    );
+  }
 }
 
-
-void showRouteEntryDialog() {
-  Get.dialog(RouteEntryDialog(), barrierDismissible: true);
+// Function to show the dialog
+void showCreateSupplierDialog() {
+  Get.dialog(
+    CreateSupplierDialog(),
+    barrierDismissible: true,
+  );
 }

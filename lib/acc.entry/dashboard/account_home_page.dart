@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  // Returns different content based on selected tab and also routing
+  // Returns different content based on selected tab
   Widget _getTabContent(int index) {
     switch (index) {
       case 0: // Tickets

@@ -1,18 +1,18 @@
-import 'package:accounts/controllers/dialogController/create_ledger_controller.dart';
+import 'package:accounts/acc.entry/controllers/dialogController/route_entry_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CreateLedgerDialog extends StatelessWidget {
-  CreateLedgerDialog({Key? key}) : super(key: key);
+class RouteEntryDialog extends StatelessWidget {
+  RouteEntryDialog({Key? key}) : super(key: key);
 
-  final CreateLedgerController controller = Get.put(CreateLedgerController());
+  final RouteEntryController controller = Get.put(RouteEntryController());
 
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      shape: RoundedRectangleBorder(borderRadius: .circular(12)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Container(
-        width: 450,
+        width: 420,
         padding: EdgeInsets.all(24),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -36,7 +36,7 @@ class CreateLedgerDialog extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    'Create Ledger',
+                    'Route Entry Form',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
@@ -46,107 +46,114 @@ class CreateLedgerDialog extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
+              //tie_up
+              _buildFormField(label: 'Tie_Up', 
+              child: _buildDropdown(controller.selectedTieUp),
+              ),
+              SizedBox(height: 12),
 
-              //ledger group
-            _buildFormField(
-                label: 'Ledger Group',
-                child: _buildDropdown(controller.selectedLedgerGroup),
+              //market
+              _buildFormField(label: 'Market', 
+              child: _buildTextField(controller.marketController),
+              ),
+              SizedBox(height: 12),
+
+              //destination
+              _buildFormField(label: 'Destination', child: _buildDropdown(controller.selectedDestination)),
+              SizedBox(height: 12),
+
+              // Air 1
+              _buildFormField(
+                label: 'Air 1',
+                child: _buildDropdown(controller.selectedAir1),
               ),
 
               SizedBox(height: 12),
 
-              // Category
+              // CX1
               _buildFormField(
-                label: 'Category',
-                child: _buildDropdown(controller.selectedCategory),
+                label: 'CX1',
+                child: _buildTextField(controller.cx1Controller),
               ),
 
               SizedBox(height: 12),
 
-              // Ledger Name
+              // Air 2
               _buildFormField(
-                label: 'Ledger Name',
-                child: _buildTextField(controller.ledgerNameController),
+                label: 'Air 2',
+                child: _buildDropdown(controller.selectedAir2),
               ),
 
               SizedBox(height: 12),
 
-              // Address
+              // CX2
               _buildFormField(
-                label: 'Address',
-                child: _buildTextField(controller.addressController),
+                label: 'CX2',
+                child: _buildTextField(controller.cx2Controller),
               ),
 
               SizedBox(height: 12),
 
-              // Mobile1
+              // Air 3
               _buildFormField(
-                label: 'Mobile1',
-                child: _buildTextField(controller.mobile1Controller),
+                label: 'Air 3',
+                child: _buildDropdown(controller.selectedAir3),
               ),
 
               SizedBox(height: 12),
 
-              // Mobile2
+              // CX3
               _buildFormField(
-                label: 'Mobile2',
-                child: _buildTextField(controller.mobile2Controller),
+                label: 'CX3',
+                child: _buildTextField(controller.cx3Controller),
               ),
 
               SizedBox(height: 12),
 
-              // Email Address
+              // AirR1
               _buildFormField(
-                label: 'Email Address',
-                child: _buildTextField(controller.emailController),
+                label: 'AirR1',
+                child: _buildDropdown(controller.selectedAirR1),
               ),
 
               SizedBox(height: 12),
 
-              // VAT/PAN No
+              // CX1-RBD
               _buildFormField(
-                label: 'VAT/PAN No',
-                child: _buildTextField(controller.vatPanController),
+                label: 'CX1-RBD',
+                child: _buildTextField(controller.cx1RbdController),
               ),
 
               SizedBox(height: 12),
 
-              // Contact Person Name
+              // AirR2
               _buildFormField(
-                label: 'Contact Person Name',
-                child: _buildTextField(controller.contactPersonController),
+                label: 'AirR2',
+                child: _buildDropdown(controller.selectedAirR2),
               ),
 
               SizedBox(height: 12),
 
-              // District
+              // CX2-RBD
               _buildFormField(
-                label: 'District',
-                child: _buildDropdown(controller.selectedDistrict),
+                label: 'CX2-RBD',
+                child: _buildTextField(controller.cx2RbdController),
               ),
 
               SizedBox(height: 12),
 
-              // Citizenship No
+              // AirR3
               _buildFormField(
-                label: 'Citizenship No',
-                child: _buildTextField(controller.citizenshipNoController),
+                label: 'AirR3',
+                child: _buildDropdown(controller.selectedAirR3),
               ),
 
               SizedBox(height: 12),
 
-              // Father's Name
+              // CX3-RBD
               _buildFormField(
-                label: "Father's Name",
-                child: _buildTextField(controller.fathersNameController),
-              ),
-
-              SizedBox(height: 12),
-
-              // Citizenship's DOI
-              _buildFormField(
-                label: "Citizenship's DOI",
-                child: _buildTextField(controller.citizenshipDoiController),
+                label: 'CX3-RBD',
+                child: _buildTextField(controller.cx3RbdController),
               ),
 
               SizedBox(height: 12),
@@ -159,31 +166,28 @@ class CreateLedgerDialog extends StatelessWidget {
 
               SizedBox(height: 24),
 
-              // Action Buttons
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  _buildActionButton(
-                    label: 'Close',
-                    color: Colors.white,
-                    textColor: Color(0xFF2563EB),
-                    onPressed: controller.onCloseClicked,
+              // Save Button
+              Align(
+                alignment: Alignment.centerRight,
+                child: ElevatedButton(
+                  onPressed: controller.onSaveClicked,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF2563EB),
+                    foregroundColor: Colors.white,
+                    padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    elevation: 0,
                   ),
-                  SizedBox(width: 8),
-                  _buildActionButton(
-                    label: 'Delete',
-                    color: Colors.white,
-                    textColor: Color(0xFF2563EB),
-                    onPressed: controller.onDeleteClicked,
+                  child: Text(
+                    'Save',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                  SizedBox(width: 8),
-                  _buildActionButton(
-                    label: 'Save',
-                    color: Color(0xFF2563EB),
-                    textColor: Colors.white,
-                    onPressed: controller.onSaveClicked,
-                  ),
-                ],
+                ),
               ),
             ],
           ),
@@ -191,11 +195,12 @@ class CreateLedgerDialog extends StatelessWidget {
       ),
     );
   }
+
   Widget _buildFormField({required String label, required Widget child}) {
     return Row(
       children: [
         SizedBox(
-          width: 145,
+          width: 90,
           child: Text(
             label,
             style: TextStyle(
@@ -211,7 +216,7 @@ class CreateLedgerDialog extends StatelessWidget {
     );
   }
 
- Widget _buildDropdown(RxString selectedValue) {
+  Widget _buildDropdown(RxString selectedValue) {
     return Obx(
       () => Container(
         padding: EdgeInsets.symmetric(horizontal: 12),
@@ -224,17 +229,14 @@ class CreateLedgerDialog extends StatelessWidget {
           child: DropdownButton<String>(
             value: selectedValue.value,
             isExpanded: true,
-            icon: Icon(Icons.arrow_drop_down, color: Colors.black54, size: 20),
+            icon: Icon(Icons.arrow_drop_down, color: Colors.black, size: 20),
             style: TextStyle(
               fontSize: 13,
-              fontWeight: FontWeight.w500,
-              color: Colors.black87,
+              fontWeight: .w500,
+              color: Colors.black,
             ),
             items: controller.dropdownItems.map((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
+              return DropdownMenuItem<String>(value: value, child: Text(value));
             }).toList(),
             onChanged: (String? newValue) {
               if (newValue != null) {
@@ -247,7 +249,7 @@ class CreateLedgerDialog extends StatelessWidget {
     );
   }
 
-  Widget _buildTextField(TextEditingController controller) {
+Widget _buildTextField(TextEditingController controller) {
     return Container(
       height: 40,
       child: TextField(
@@ -271,38 +273,9 @@ class CreateLedgerDialog extends StatelessWidget {
       ),
     );
   }
-
-  Widget _buildActionButton({
-    required String label,
-    required Color color,
-    required Color textColor,
-    required VoidCallback onPressed,
-  }) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: color,
-        foregroundColor: textColor,
-        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(6),
-          side: color == Colors.white
-              ? BorderSide(color: Color(0xFF2563EB), width: 1.5)
-              : BorderSide.none,
-        ),
-        elevation: 0,
-      ),
-      child: Text(
-        label,
-        style: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w600,
-        ),
-      ),
-    );
-  }
 }
 
-void showCreateLedgerDialog() {
-  Get.dialog(CreateLedgerDialog(), barrierDismissible: true);
+
+void showRouteEntryDialog() {
+  Get.dialog(RouteEntryDialog(), barrierDismissible: true);
 }

@@ -1,11 +1,11 @@
-import 'package:accounts/controllers/state/main_content_controller.dart';
-import 'package:accounts/widgets/dialogBoxWidget/air_line_pass_dialog.dart';
-import 'package:accounts/widgets/dialogBoxWidget/airline_contacts_dialog.dart';
-import 'package:accounts/widgets/dialogBoxWidget/bank_details_dialog.dart';
-import 'package:accounts/widgets/dialogBoxWidget/create_ledger_dialog.dart';
-import 'package:accounts/widgets/dialogBoxWidget/gdspassdialog.dart';
-import 'package:accounts/widgets/dialogBoxWidget/route_entry_dialog.dart';
-import 'package:accounts/widgets/dialogBoxWidget/supplier_dilogue.dart';
+import 'package:accounts/acc.entry/controllers/state/account_content_controller.dart';
+import 'package:accounts/acc.entry/widgets/dialogBoxWidget/air_line_pass_dialog.dart';
+import 'package:accounts/acc.entry/widgets/dialogBoxWidget/airline_contacts_dialog.dart';
+import 'package:accounts/acc.entry/widgets/dialogBoxWidget/bank_details_dialog.dart';
+import 'package:accounts/acc.entry/widgets/dialogBoxWidget/create_ledger_dialog.dart';
+import 'package:accounts/acc.entry/widgets/dialogBoxWidget/gdspassdialog.dart';
+import 'package:accounts/acc.entry/widgets/dialogBoxWidget/route_entry_dialog.dart';
+import 'package:accounts/acc.entry/widgets/dialogBoxWidget/supplier_dilogue.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,7 +13,7 @@ import 'package:get/get.dart';
 class MainContent extends StatelessWidget {
   MainContent({Key? key}) : super(key: key);
 
-  final MainContentController controller = Get.put(MainContentController());
+  final AccountContentController controller = Get.put(AccountContentController());
 
   @override
   Widget build(BuildContext context) {

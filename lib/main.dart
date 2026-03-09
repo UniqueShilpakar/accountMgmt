@@ -1,4 +1,4 @@
-import 'package:accounts/dashboard/home_page.dart';
+import 'package:accounts/acc.entry/dashboard/account_home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter AppBar Demo',
+      title: 'Acc.entry',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,

@@ -1,19 +1,16 @@
-
-import 'package:accounts/controllers/dialogController/supplier_controller.dart';
+import 'package:accounts/acc.entry/controllers/dialogController/create_ledger_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CreateSupplierDialog extends StatelessWidget {
-  CreateSupplierDialog({Key? key}) : super(key: key);
+class CreateLedgerDialog extends StatelessWidget {
+  CreateLedgerDialog({Key? key}) : super(key: key);
 
-  final CreateSupplierController controller = Get.put(CreateSupplierController());
+  final CreateLedgerController controller = Get.put(CreateLedgerController());
 
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: .circular(12)),
       child: Container(
         width: 450,
         padding: EdgeInsets.all(24),
@@ -27,9 +24,9 @@ class CreateSupplierDialog extends StatelessWidget {
         ),
         child: SingleChildScrollView(
           child: Column(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisSize: .min,
             children: [
-              // Header
+              //header
               Container(
                 width: double.infinity,
                 padding: EdgeInsets.symmetric(vertical: 12),
@@ -39,7 +36,7 @@ class CreateSupplierDialog extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    'Create Supplier',
+                    'Create Ledger',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
@@ -48,21 +45,12 @@ class CreateSupplierDialog extends StatelessWidget {
                   ),
                 ),
               ),
-
               SizedBox(height: 20),
 
-              // Supplier Group
-              _buildFormField(
-                label: 'Supplier Group',
-                child: _buildDropdown(controller.selectedSupplierGroup),
-              ),
-
-              SizedBox(height: 12),
-
-              // Supplier Name
-              _buildFormField(
-                label: 'Supplier Name',
-                child: _buildTextField(controller.supplierNameController),
+              //ledger group
+            _buildFormField(
+                label: 'Ledger Group',
+                child: _buildDropdown(controller.selectedLedgerGroup),
               ),
 
               SizedBox(height: 12),
@@ -75,6 +63,14 @@ class CreateSupplierDialog extends StatelessWidget {
 
               SizedBox(height: 12),
 
+              // Ledger Name
+              _buildFormField(
+                label: 'Ledger Name',
+                child: _buildTextField(controller.ledgerNameController),
+              ),
+
+              SizedBox(height: 12),
+
               // Address
               _buildFormField(
                 label: 'Address',
@@ -83,10 +79,18 @@ class CreateSupplierDialog extends StatelessWidget {
 
               SizedBox(height: 12),
 
-              // Mobile
+              // Mobile1
               _buildFormField(
-                label: 'Mobile',
-                child: _buildTextField(controller.mobileController),
+                label: 'Mobile1',
+                child: _buildTextField(controller.mobile1Controller),
+              ),
+
+              SizedBox(height: 12),
+
+              // Mobile2
+              _buildFormField(
+                label: 'Mobile2',
+                child: _buildTextField(controller.mobile2Controller),
               ),
 
               SizedBox(height: 12),
@@ -123,10 +127,34 @@ class CreateSupplierDialog extends StatelessWidget {
 
               SizedBox(height: 12),
 
-              // Ledger ID
+              // Citizenship No
               _buildFormField(
-                label: 'Ledger ID',
-                child: _buildTextField(controller.ledgerIdController, hint: '(New)'),
+                label: 'Citizenship No',
+                child: _buildTextField(controller.citizenshipNoController),
+              ),
+
+              SizedBox(height: 12),
+
+              // Father's Name
+              _buildFormField(
+                label: "Father's Name",
+                child: _buildTextField(controller.fathersNameController),
+              ),
+
+              SizedBox(height: 12),
+
+              // Citizenship's DOI
+              _buildFormField(
+                label: "Citizenship's DOI",
+                child: _buildTextField(controller.citizenshipDoiController),
+              ),
+
+              SizedBox(height: 12),
+
+              // Remarks
+              _buildFormField(
+                label: 'Remarks',
+                child: _buildTextField(controller.remarksController),
               ),
 
               SizedBox(height: 24),
@@ -143,6 +171,13 @@ class CreateSupplierDialog extends StatelessWidget {
                   ),
                   SizedBox(width: 8),
                   _buildActionButton(
+                    label: 'Delete',
+                    color: Colors.white,
+                    textColor: Color(0xFF2563EB),
+                    onPressed: controller.onDeleteClicked,
+                  ),
+                  SizedBox(width: 8),
+                  _buildActionButton(
                     label: 'Save',
                     color: Color(0xFF2563EB),
                     textColor: Colors.white,
@@ -156,7 +191,6 @@ class CreateSupplierDialog extends StatelessWidget {
       ),
     );
   }
-
   Widget _buildFormField({required String label, required Widget child}) {
     return Row(
       children: [
@@ -166,8 +200,8 @@ class CreateSupplierDialog extends StatelessWidget {
             label,
             style: TextStyle(
               fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: Colors.black87,
+              fontWeight: .w500,
+              color: Colors.black,
             ),
           ),
         ),
@@ -177,7 +211,7 @@ class CreateSupplierDialog extends StatelessWidget {
     );
   }
 
-  Widget _buildDropdown(RxString selectedValue) {
+ Widget _buildDropdown(RxString selectedValue) {
     return Obx(
       () => Container(
         padding: EdgeInsets.symmetric(horizontal: 12),
@@ -213,15 +247,13 @@ class CreateSupplierDialog extends StatelessWidget {
     );
   }
 
-  Widget _buildTextField(TextEditingController controller, {String hint = ''}) {
+  Widget _buildTextField(TextEditingController controller) {
     return Container(
       height: 40,
       child: TextField(
         controller: controller,
         style: TextStyle(fontSize: 13),
         decoration: InputDecoration(
-          hintText: hint,
-          hintStyle: TextStyle(color: Colors.black54, fontSize: 13),
           contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(6),
@@ -271,10 +303,6 @@ class CreateSupplierDialog extends StatelessWidget {
   }
 }
 
-// Function to show the dialog
-void showCreateSupplierDialog() {
-  Get.dialog(
-    CreateSupplierDialog(),
-    barrierDismissible: true,
-  );
+void showCreateLedgerDialog() {
+  Get.dialog(CreateLedgerDialog(), barrierDismissible: true);
 }

@@ -1,11 +1,11 @@
-import 'package:accounts/controllers/dialogController/airline_pass_controller.dart';
+import 'package:accounts/acc.entry/controllers/dialogController/gds_pass_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class AirLinePassDialog extends StatelessWidget {
-  AirLinePassDialog({Key? key}) : super(key: key);
+class GdsPassDialog extends StatelessWidget {
+  GdsPassDialog({Key? key}) : super(key: key);
 
-  final AirlinePassController controller = Get.put(AirlinePassController());
+  final GdsPassController controller = Get.put(GdsPassController());
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class AirLinePassDialog extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  'Airline Pass. Entry Form',
+                  'GDS Pass. Entry Form',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
@@ -46,45 +46,53 @@ class AirLinePassDialog extends StatelessWidget {
             ),
             SizedBox(height: 20),
 
-            // Organization Dropdown
-            _buildFormField(
-              label: 'Organization',
-              child: _buildDropdown(
-                controller.selectedOrganization,
-                controller.organizations,
+            //gds dropdown
+            _buildFormField(label: 'GDS', child: _buildDropdown(
+              controller.selectedGds,
+              controller.gdsList,
               ),
             ),
-
             SizedBox(height: 12),
 
-            // UserID
-            _buildFormField(
-              label: 'UserID',
-              child: _buildTextField(controller.userIdController),
-            ),
-
-            SizedBox(height: 12),
-
-            // Password
-            _buildFormField(
-              label: 'Password',
-              child: _buildTextField(
-                controller.passwordController,
-                isPassword: true,
+            //username
+            _buildFormField(label: 'User Name', 
+            child: _buildTextField(
+              controller.userNameController,
               ),
             ),
-
             SizedBox(height: 12),
 
-            // Dcode
-            _buildFormField(
-              label: 'Dcode',
-              child: _buildTextField(controller.dcodeController),
+            //OID_PCC
+            _buildFormField(label: 'OID_PCC', 
+            child: _buildTextField(controller.oidPccController),
             ),
-
             SizedBox(height: 12),
 
-            // URL
+            //userId
+            _buildFormField(label: 'UserId', 
+            child: _buildTextField(controller.userIdController),
+            ),
+            SizedBox(height: 12),
+
+            //password
+            _buildFormField(label: 'Password', 
+            child: _buildTextField(controller.passwordController, isPassword: true),
+            ),
+            SizedBox(height: 12),
+
+            //Decode
+            _buildFormField(label: 'Dcode', 
+            child: _buildTextField(controller.dcodeController),
+            ),
+            SizedBox(height: 12),
+
+            //LNIATA
+            _buildFormField(label: 'LNIATA', 
+            child: _buildTextField(controller.lniataController),
+            ),
+            SizedBox(height: 12),
+
+             // URL
             _buildFormField(
               label: 'URL',
               child: _buildTextField(controller.urlController),
@@ -96,14 +104,6 @@ class AirLinePassDialog extends StatelessWidget {
             _buildFormField(
               label: 'Expiry Date',
               child: _buildTextField(controller.expiryDateController),
-            ),
-
-            SizedBox(height: 12),
-
-            // PWID
-            _buildFormField(
-              label: 'PWID',
-              child: _buildTextField(controller.pwidController, hint: '(New)',),
             ),
 
             SizedBox(height: 24),
@@ -152,30 +152,30 @@ class AirLinePassDialog extends StatelessWidget {
       ],
     );
   }
-
-  Widget _buildDropdown(RxString selectedValue, List<String> items) {
+   Widget _buildDropdown(RxString selectedValue, List<String> items) {
     return Obx(
       () => Container(
         padding: EdgeInsets.symmetric(horizontal: 12),
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(color: Color(0xFFD1D5DB)),
-          borderRadius: .circular(6),
+          borderRadius: BorderRadius.circular(6),
         ),
         child: DropdownButtonHideUnderline(
-          child: DropdownButton(
+          child: DropdownButton<String>(
             value: selectedValue.value,
             isExpanded: true,
-            //used icon for now
-            // ---------------------------------
-            icon: Icon(Icons.arrow_drop_down, color: Colors.black, size: 20),
+            icon: Icon(Icons.arrow_drop_down, color: Colors.black54, size: 20),
             style: TextStyle(
               fontSize: 13,
-              fontWeight: .w500,
-              color: Colors.black,
+              fontWeight: FontWeight.w500,
+              color: Colors.black87,
             ),
             items: items.map((String value) {
-              return DropdownMenuItem<String>(value: value, child: Text(value));
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
             }).toList(),
             onChanged: (String? newValue) {
               if (newValue != null) {
@@ -187,9 +187,9 @@ class AirLinePassDialog extends StatelessWidget {
       ),
     );
   }
+
   Widget _buildTextField(
     TextEditingController controller, {
-    String hint = '',
     bool isPassword = false,
   }) {
     return Container(
@@ -199,8 +199,6 @@ class AirLinePassDialog extends StatelessWidget {
         obscureText: isPassword,
         style: TextStyle(fontSize: 13),
         decoration: InputDecoration(
-          hintText: hint,
-          hintStyle: TextStyle(color: Colors.black54, fontSize: 13),
           contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(6),
@@ -250,6 +248,6 @@ class AirLinePassDialog extends StatelessWidget {
   }
 }
 
-void showAirlinePassDialog() {
-  Get.dialog(AirLinePassDialog(), barrierDismissible: true);
+void showGdsPassDialog() {
+  Get.dialog(GdsPassDialog(), barrierDismissible: true);
 }
