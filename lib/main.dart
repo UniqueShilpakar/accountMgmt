@@ -1,4 +1,4 @@
-import 'package:accounts/acc.entry/account%20_dashboard/account_home_page.dart';
+import 'package:accounts/main_dashboard/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         colorSchemeSeed: Colors.blue,
       ),
-      home:  HomePage(),
+      home:  HomePage (),
     );
   }
 }

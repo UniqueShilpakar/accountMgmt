@@ -3,6 +3,7 @@ import 'package:accounts/acc.entry/Appbar/custom_tabs.dart';
 import 'package:accounts/acc.entry/controllers/account_dashboard_controller/custom_tab_controller.dart';
 import 'package:accounts/acc.entry/widgets/Account_section_content/custom_sidebar.dart';
 import 'package:accounts/acc.entry/widgets/Account_section_content/main_account_content.dart';
+import 'package:accounts/tickets/widgets/ticket_Sales_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -24,10 +25,12 @@ class HomePage extends StatelessWidget {
           children: [
             CustomTabs(), // Tabs stay constant
             const SizedBox(height: 15),
-            
+
             // Content changes based on selected tab
             Expanded(
-              child: Obx(() => _getTabContent(tabsController.selectedTabIndex.value)),
+              child: Obx(
+                () => _getTabContent(tabsController.selectedTabIndex.value),
+              ),
             ),
           ],
         ),
@@ -39,40 +42,60 @@ class HomePage extends StatelessWidget {
   Widget _getTabContent(int index) {
     switch (index) {
       case 0: // Tickets
-        return Center(child: Text('Tickets Content', style: TextStyle(fontSize: 18)));
-        
+         return TicketSalesPage();
+
       case 1: // Acc. Entry - WITH SIDEBAR
         return _buildLayoutWithSidebar(MainContent());
-        
+
       case 2: // Credits
-        return Center(child: Text('Credits Content', style: TextStyle(fontSize: 18)));
-        
+        return Center(
+          child: Text('Credits Content', style: TextStyle(fontSize: 18)),
+        );
+
       case 3: // Cr sales
-        return Center(child: Text('Cr sales Content', style: TextStyle(fontSize: 18)));
-        
+        return Center(
+          child: Text('Cr sales Content', style: TextStyle(fontSize: 18)),
+        );
+
       case 4: // Reissue
-        return Center(child: Text('Reissue Content', style: TextStyle(fontSize: 18)));
-        
+        return Center(
+          child: Text('Reissue Content', style: TextStyle(fontSize: 18)),
+        );
+
       case 5: // Refunds
-        return Center(child: Text('Refunds Content', style: TextStyle(fontSize: 18)));
-        
+        return Center(
+          child: Text('Refunds Content', style: TextStyle(fontSize: 18)),
+        );
+
       case 6: // DateX
-        return Center(child: Text('DateX Content', style: TextStyle(fontSize: 18)));
-        
+        return Center(
+          child: Text('DateX Content', style: TextStyle(fontSize: 18)),
+        );
+
       case 7: // L/P Qry
-        return Center(child: Text('L/P Qry Content', style: TextStyle(fontSize: 18)));
-        
+        return Center(
+          child: Text('L/P Qry Content', style: TextStyle(fontSize: 18)),
+        );
+
       case 8: // Modify
-        return Center(child: Text('Modify Content', style: TextStyle(fontSize: 18)));
-        
+        return Center(
+          child: Text('Modify Content', style: TextStyle(fontSize: 18)),
+        );
+
       case 9: // Invoice
-        return Center(child: Text('Invoice Content', style: TextStyle(fontSize: 18)));
-        
+        return Center(
+          child: Text('Invoice Content', style: TextStyle(fontSize: 18)),
+        );
+
       case 10: // Statements
-        return Center(child: Text('Statements Content', style: TextStyle(fontSize: 18)));
-        
+        return Center(
+          child: Text('Statements Content', style: TextStyle(fontSize: 18)),
+        );
+
       default:
-        return Center(child: Text('Select a tab', style: TextStyle(fontSize: 18)));
+        return Center(
+          child: Text('Select a tab', style: TextStyle(fontSize: 18)),
+        );
     }
   }
 
@@ -83,7 +106,7 @@ class HomePage extends StatelessWidget {
         // Sidebar
         CustomSidebar(),
         const SizedBox(width: 20),
-        
+
         // Main Content Area
         Expanded(child: content),
       ],
