@@ -1,3 +1,4 @@
+import 'package:accounts/tickets/widgets/ticketsale_dilogue.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
@@ -193,14 +194,14 @@ void onExport() {
     print('Exporting data...');
   }
 
+// function used from ticketsale_dialoge.dart
+//-----------------------------------\\
   void onNewTicketSales() {
-    // Implement new ticket sales logic here
-    print('Opening new ticket sales form...');
+    showTicketSaleDialog();
   }
-
   void changePage(int page) {
     currentPage.value = page;
-    // Load data for the selected page
+    // Loading data for the selected page
   }
 
   void nextPage() {
